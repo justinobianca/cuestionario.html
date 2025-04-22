@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questionário HTML</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .question {
+            margin-bottom: 20px;
+        }
+        .question label {
+            display: block;
+            margin: 5px 0;
+        }
+        .correct {
+            background-color: green;
+            color: white;
+        }
+        .incorrect {
+            background-color: red;
+            color: white;
+        }
+        .submit-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .submit-btn:hover {
+            background-color: #45a049;
+        }
+        .score {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Questionário sobre Anatomia</h1>
+
+    <form id="quiz-form">
+        <div class="question">
+            <p>1. Onde se origina o músculo bíceps braquial?</p>
+            <label><input type="radio" name="q1" value="a"> a) Tubérculo infraglenoideo da escápula</label>
+            <label><input type="radio" name="q1" value="b"> b) Fosa supraespinosa da escápula</label>
+            <label><input type="radio" name="q1" value="c"> c) Apófisis coracoides da escápula</label>
+            <label><input type="radio" name="q1" value="d"> d) Cabeça lateral do úmero</label>
+        </div>
+
+        <div class="question">
+            <p>2. Onde se insere o músculo braquial?</p>
+            <label><input type="radio" name="q2" value="a"> a) Tuberosidade do cúbito</label>
+            <label><input type="radio" name="q2" value="b"> b) Epicôndilo lateral do úmero</label>
+            <label><input type="radio" name="q2" value="c"> c) Cabeça do rádio</label>
+            <label><input type="radio" name="q2" value="d"> d) Tuberosidade do úmero</label>
+        </div>
+
+        <div class="question">
+            <p>3. Onde se origina o músculo flexor radial do carpo?</p>
+            <label><input type="radio" name="q3" value="a"> a) Epicôndilo medial do úmero</label>
+            <label><input type="radio" name="q3" value="b"> b) Fosa radial do úmero</label>
+            <label><input type="radio" name="q3" value="c"> c) Tuberosidade do rádio</label>
+            <label><input type="radio" name="q3" value="d"> d) Apófisis coracoides</label>
+        </div>
+
+        <div class="question">
+            <p>4. Onde se insere o músculo extensor carpi radialis brevis?</p>
+            <label><input type="radio" name="q4" value="a"> a) Base do 2º metacarpo</label>
+            <label><input type="radio" name="q4" value="b"> b) Base do 3º metacarpo</label>
+            <label><input type="radio" name="q4" value="c"> c) Base do 5º metacarpo</label>
+            <label><input type="radio" name="q4" value="d"> d) Falange distal do dedo médio</label>
+        </div>
+
+        <div class="question">
+            <p>5. Onde se origina o músculo pronador quadrado?</p>
+            <label><input type="radio" name="q5" value="a"> a) Cara anterior do cúbito</label>
+            <label><input type="radio" name="q5" value="b"> b) Epicôndilo medial do úmero</label>
+            <label><input type="radio" name="q5" value="c"> c) Fosa supraclavicular</label>
+            <label><input type="radio" name="q5" value="d"> d) Apófisis coracoides</label>
+        </div>
+
+        <div class="question">
+            <p>6. Onde se insere o músculo flexor profundo de dedos?</p>
+            <label><input type="radio" name="q6" value="a"> a) Falange distal dos dedos 2 a 5</label>
+            <label><input type="radio" name="q6" value="b"> b) Base do 5º metacarpo</label>
+            <label><input type="radio" name="q6" value="c"> c) Fosa radial</label>
+            <label><input type="radio" name="q6" value="d"> d) Tuberosidade do cúbito</label>
+        </div>
+
+        <div class="question">
+            <p>7. Onde se origina o músculo extensor dos dedos?</p>
+            <label><input type="radio" name="q7" value="a"> a) Epicôndilo lateral do úmero</label>
+            <label><input type="radio" name="q7" value="b"> b) Tuberosidade do úmero</label>
+            <label><input type="radio" name="q7" value="c"> c) Cabeça do rádio</label>
+            <label><input type="radio" name="q7" value="d"> d) Apófisis coracoides</label>
+        </div>
+
+        <div class="question">
+            <p>8. Onde se insere o músculo flexor cubital do carpo?</p>
+            <label><input type="radio" name="q8" value="a"> a) Hueso pisiforme</label>
+            <label><input type="radio" name="q8" value="b"> b) Base do 5º metacarpo</label>
+            <label><input type="radio" name="q8" value="c"> c) Falange proximal do dedo meñique</label>
+            <label><input type="radio" name="q8" value="d"> d) Olécranon</label>
+        </div>
+
+        <div class="question">
+            <p>9. Onde se origina o músculo tríceps braquial?</p>
+            <label><input type="radio" name="q9" value="a"> a) Tubérculo infraglenoideo da escápula</label>
+            <label><input type="radio" name="q9" value="b"> b) Epicôndilo lateral do úmero</label>
+            <label><input type="radio" name="q9" value="c"> c) Fosa infraglenoidea</label>
+            <label><input type="radio" name="q9" value="d"> d) Tuberosidade do rádio</label>
+        </div>
+
+        <div class="question">
+            <p>10. Onde se insere o músculo extensor carpi ulnaris?</p>
+            <label><input type="radio" name="q10" value="a"> a) Base do 5º metacarpo</label>
+            <label><input type="radio" name="q10" value="b"> b) Base do 2º metacarpo</label>
+            <label><input type="radio" name="q10" value="c"> c) Fosa olecraniana</label>
+            <label><input type="radio" name="q10" value="d"> d) Falange distal do dedo meñique</label>
+        </div>
+
+        <button type="button" class="submit-btn" onclick="submitQuiz()">Submeter</button>
+    </form>
+
+    <div class="score" id="score"></div>
+
+    <script>
+        function submitQuiz() {
+            let score = 0;
+            let totalQuestions = 10;
+            const correctAnswers = {
+                q1: 'c',
+                q2: 'a',
+                q3: 'a',
+                q4: 'b',
+                q5: 'a',
+                q6: 'a',
+                q7: 'a',
+                q8: 'a',
+                q9: 'a',
+                q10: 'a'
+            };
+
+            // Loop through the questions
+            for (let i = 1; i <= totalQuestions; i++) {
+                const question = document.querySelector(`input[name="q${i}"]:checked`);
+                const questionDiv = document.querySelector(`.question:nth-child(${i})`);
+
+                if (question) {
+                    const selectedAnswer = question.value;
+                    if (selectedAnswer === correctAnswers[`q${i}`]) {
+                        score++;
+                        question.parentElement.classList.add('correct');
+                    } else {
+                        question.parentElement.classList.add('incorrect');
+                    }
+                }
+            }
+
+            // Display score
+            document.getElementById('score').innerHTML = `Você acertou ${score} de ${totalQuestions} questões.`;
+        }
+    </script>
+
+</body>
+</html>

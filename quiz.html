@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz Interactivo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+    header {
+      background-color: #333;
+      color: white;
+      padding: 15px 0;
+      text-align: center;
+    }
+    .container {
+      max-width: 900px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .question {
+      font-size: 20px;
+      margin-bottom: 15px;
+    }
+    .options {
+      list-style-type: none;
+      padding: 0;
+    }
+    .options li {
+      background-color: #efefef;
+      margin: 10px 0;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .options li:hover {
+      background-color: #ddd;
+    }
+    .correct {
+      background-color: #4caf50 !important;
+    }
+    .incorrect {
+      background-color: #f44336 !important;
+    }
+    .score {
+      font-size: 18px;
+      margin-top: 20px;
+      text-align: center;
+    }
+    footer {
+      text-align: center;
+      padding: 10px;
+      background-color: #333;
+      color: white;
+      position: fixed;
+      width: 100%;
+      bottom: 0;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Quiz de Anatomía del Miembro Superior</h1>
+</header>
+
+<div class="container">
+  <div id="quiz-container">
+    <div class="question" id="question"></div>
+    <ul class="options" id="options"></ul>
+  </div>
+  <div class="score" id="score">Puntaje: 0</div>
+</div>
+
+<footer>
+  <p>&copy; 2025 - Todos los derechos reservados</p>
+</footer>
+
+<script>
+  const questions = [
+    {
+      question: "¿Qué nervio inerva al músculo redondo menor?",
+      options: ["Nervio mediano", "Nervio axilar", "Nervio radial", "Nervio subescapular"],
+      answer: 1
+    },
+    {
+      question: "¿Qué músculo es inervado por el nervio torácico largo?",
+      options: ["Trapecio", "Pectoral mayor", "Serrato anterior", "Subclavio"],
+      answer: 2
+    },
+    {
+      question: "¿Cuál es la acción principal del músculo braquial?",
+      options: ["Flexión del antebrazo", "Supinación del antebrazo", "Extensión del brazo", "Rotación medial del brazo"],
+      answer: 0
+    },
+    {
+      question: "¿Dónde se inserta el músculo pectoral mayor?",
+      options: ["Clavícula", "Tubérculo mayor del húmero", "Escápula", "Acromion"],
+      answer: 1
+    },
+    {
+      question: "¿Qué músculo es perforado por el nervio musculocutáneo?",
+      options: ["Coracobraquial", "Bíceps braquial", "Braquial", "Deltoides"],
+      answer: 0
+    },
+    {
+      question: "¿Qué músculo se origina en la escápula y se inserta en el húmero?",
+      options: ["Subescapular", "Deltoides", "Pectoral mayor", "Trapecio"],
+      answer: 0
+    },
+    {
+      question: "¿Qué músculo extiende el antebrazo en la articulación del codo?",
+      options: ["Tríceps braquial", "Bíceps braquial", "Braquial", "Pronador redondo"],
+      answer: 0
+    },
+    {
+      question: "¿Cuál es la acción del músculo deltoides?",
+      options: ["Abducción del brazo", "Rotación medial del brazo", "Flexión del antebrazo", "Extensión del antebrazo"],
+      answer: 0
+    },
+    {
+      question: "¿Qué músculo se inserta en la apófisis coracoides de la escápula?",
+      options: ["Coracobraquial", "Subescapular", "Infraespinoso", "Trapecio"],
+      answer: 0
+    },
+    {
+      question: "¿Qué nervio inerva al músculo supraespinoso?",
+      options: ["Nervio supraescapular", "Nervio radial", "Nervio mediano", "Nervio musculocutáneo"],
+      answer: 0
+    },
+    {
+      question: "¿Cuál es el músculo principal para la supinación del antebrazo?",
+      options: ["Bíceps braquial", "Pronador redondo", "Braquiorradial", "Anconeo"],
+      answer: 0
+    },
+    {
+      question: "¿Cuál es el nervio que pasa por el surco del nervio radial?",
+      options: ["Nervio radial", "Nervio cubital", "Nervio axilar", "Nervio mediano"],
+      answer: 0
+    },
+    {
+      question: "¿Qué músculo se inserta en la tuberosidad radial?",
+      options: ["Bíceps braquial", "Tríceps braquial", "Deltoides", "Supinador"],
+      answer: 0
+    },
+    {
+      question: "¿Qué músculo forma parte del manguito rotador?",
+      options: ["Subescapular", "Redondo mayor", "Deltoides", "Coracobraquial"],
+      answer: 0
+    },
+    {
+      question: "¿Qué músculo se encuentra en la cara posterior del brazo?",
+      options: ["Tríceps braquial", "Bíceps braquial", "Pectoral menor", "Braquial"],
+      answer: 0
+    },
+    {
+      question: "¿Cuál es el nervio que inerva al músculo deltoides?",
+      options: ["Nervio axilar", "Nervio mediano", "Nervio musculocutáneo", "Nervio cubital"],
+      answer: 0
+    },
+    {
+      question: "¿Cuál es la función del músculo braquiorradial?",
+      options: ["Flexión del codo", "Extensión de la muñeca", "Pronación del antebrazo", "Supinación del brazo"],
+      answer: 0
+    },
+    {
+      question: "¿Qué músculo no pertenece al manguito rotador?",
+      options: ["Redondo mayor", "Infraespinoso", "Supraespinoso", "Subescapular"],
+      answer: 0
+    },
+    {
+      question: "¿Qué arteria irriga al músculo deltoides?",
+      options: ["Arteria circunfleja humeral posterior", "Arteria subescapular", "Arteria radial", "Arteria torácica lateral"],
+      answer: 0
+    },
+    {
+      question: "¿Cuál es el origen del músculo tríceps braquial?",
+      options: ["Escápula y húmero", "Clavícula", "Radio y cúbito", "Acromion"],
+      answer: 0
+    },
+    {
+      question: "¿Qué músculo se inserta en el tubérculo menor del húmero?",
+      options: ["Subescapular", "Bíceps braquial", "Pectoral mayor", "Tríceps braquial"],
+      answer: 0
+    },
+    {
+      question: "¿Qué músculo se encuentra en la región posterior del hombro?",
+      options: ["Infraespinoso", "Deltoides", "Trapecio", "Serrato anterior"],
+      answer: 0
+    },
+    {
+      question: "¿Qué músculo es responsable de la flexión del codo?",
+      options: ["Bíceps braquial", "Tríceps braquial", "Braquial", "Coracobraquial"],
+      answer: 0
+    },
+    {
+      question: "¿Qué músculo se inserta en el acromion?",
+      options: ["Deltoides", "Pectoral mayor", "Trapecio", "Infraespinoso"],
+      answer: 0
+    },
+    {
+      question: "¿Cuál es la acción del músculo serrato anterior?",
+      options: ["Abducción de la escápula", "Elevación del hombro", "Flexión del codo", "Extensión del hombro"],
+      answer: 0
+    },
+    {
+      question: "¿Qué músculo se inserta en la espina de la escápula?",
+      options: ["Trapecio", "Serrato anterior", "Deltoides", "Supraespinoso"],
+      answer: 0
+    },
+    {
+      question: "¿Qué músculo es responsable de la aducción del brazo?",
+      options: ["Pectoral mayor", "Deltoides", "Trapecio", "Bíceps braquial"],
+      answer: 0
+    },
+    {
+      question: "¿Qué nervio inerva al músculo coracobraquial?",
+      options: ["Nervio musculocutáneo", "Nervio radial", "Nervio axilar", "Nervio mediano"],
+      answer: 0
+    },
+    {
+      question: "¿Qué músculo es responsable de la rotación lateral del brazo?",
+      options: ["Infraespinoso", "Deltoides", "Redondo menor", "Bíceps braquial"],
+      answer: 0
+    },
+    {
+      question: "¿Qué músculo se inserta en la apófisis espinosa de la escápula?",
+      options: ["Trapecio", "Serrato anterior", "Pectoral mayor", "Deltoides"],
+      answer: 0
+    }
+  ];
+
+  let currentQuestionIndex = 0;
+  let score = 0;
+
+  function loadQuestion() {
+    const questionContainer = document.getElementById('question');
+    const optionsContainer = document.getElementById('options');
+    const currentQuestion = questions[currentQuestionIndex];
+
+    questionContainer.textContent = currentQuestion.question;
+    optionsContainer.innerHTML = '';
+
+    currentQuestion.options.forEach((option, index) => {
+      const li = document.createElement('li');
+      li.textContent = option;
+      li.onclick = () => checkAnswer(index, li);
+      optionsContainer.appendChild(li);
+    });
+  }
+
+  function checkAnswer(selectedIndex, li) {
+    const currentQuestion = questions[currentQuestionIndex];
+
+    if (selectedIndex === currentQuestion.answer) {
+      score++;
+      li.classList.add('correct');
+    } else {
+      li.classList.add('incorrect');
+    }
+
+    setTimeout(() => {
+      currentQuestionIndex++;
+      if (currentQuestionIndex < questions.length) {
+        loadQuestion();
+      } else {
+        displayScore();
+      }
+    }, 1000);
+  }
+
+  function displayScore() {
+    const scoreContainer = document.getElementById('score');
+    scoreContainer.textContent = `Tu puntaje final es: ${score} de ${questions.length}`;
+  }
+
+  loadQuestion();
+</script>
+
+</body>
+</html>
+
